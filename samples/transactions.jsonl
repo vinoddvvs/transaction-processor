@@ -1,0 +1,10 @@
+{"transactionId":"tx-002","accountId":"acct-1","transactionType":"DEBIT","amount":"25.00","currency":"USD","sequenceNumber":2,"requestId":"req-002"}
+{"transactionId":"tx-001","accountId":"acct-1","transactionType":"CREDIT","amount":"100.00","currency":"USD","sequenceNumber":1,"requestId":"req-001"}
+{"transactionId":"tx-003","accountId":"acct-2","transactionType":"CREDIT","amount":"50.00","currency":"INR","sequenceNumber":1,"requestId":"req-003"}
+{"transactionId":"tx-004","accountId":"acct-3","transactionType":"CREDIT","amount":"10.00","currency":"EUR","sequenceNumber":2,"requestId":"req-004"}
+this is not JSON
+{"transactionId":"invalid-amount","accountId":"acct-1","transactionType":"CREDIT","amount":"0.001","currency":"USD","sequenceNumber":3,"requestId":"req-invalid"}
+{"transactionId":"tx-001","accountId":"acct-1","transactionType":"CREDIT","amount":"100.00","currency":"USD","sequenceNumber":1,"requestId":"req-001"}
+{"transactionId":"tx-001","accountId":"acct-1","transactionType":"credit","amount":"100.0","currency":"usd","sequenceNumber":1,"requestId":"req-001-late"}
+{"transactionId":"tx-001","accountId":"acct-1","transactionType":"CREDIT","amount":"101.00","currency":"USD","sequenceNumber":1,"requestId":"req-conflict"}
+{"transactionId":"tx-other","accountId":"acct-1","transactionType":"CREDIT","amount":"5.00","currency":"USD","sequenceNumber":3,"requestId":"req-003"}

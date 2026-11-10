@@ -1,0 +1,26 @@
+INGEST line=1 requestId=req-002 transactionId=tx-002 outcome=ACCEPTED
+INGEST line=2 requestId=req-001 transactionId=tx-001 outcome=ACCEPTED
+INGEST line=3 requestId=req-003 transactionId=tx-003 outcome=ACCEPTED
+INGEST line=4 requestId=req-004 transactionId=tx-004 outcome=ACCEPTED
+REJECTED line=5 reason=Invalid JSON
+REJECTED line=6 reason=amount must be an exact decimal with at most two fractional digits
+INGEST line=7 requestId=req-001 transactionId=tx-001 outcome=DUPLICATE_REQUEST
+INGEST line=8 requestId=req-001-late transactionId=tx-001 outcome=DUPLICATE_TRANSACTION
+INGEST line=9 requestId=req-conflict transactionId=tx-001 outcome=CONFLICT
+INGEST line=10 requestId=req-003 transactionId=tx-other outcome=CONFLICT
+RETRY transactionId=tx-001 attempt=1 reason=Simulated transient failure at AFTER_LEDGER
+RETRY transactionId=tx-003 attempt=1 reason=Simulated transient failure at AFTER_LEDGER
+PROCESSED transactionId=tx-001 attempt=2
+PROCESSED transactionId=tx-003 attempt=2
+RETRY transactionId=tx-002 attempt=1 reason=Simulated transient failure at AFTER_LEDGER
+PROCESSED transactionId=tx-002 attempt=2
+INPUT_SUMMARY accepted=4 duplicateRequests=1 duplicateTransactions=1 conflicts=2 invalid=2
+STATE_SUMMARY state=PENDING count=1
+STATE_SUMMARY state=RETRY count=0
+STATE_SUMMARY state=PROCESSED count=3
+STATE_SUMMARY state=FAILED count=0
+LEDGER_SUMMARY entries=3 rejectedInputs=4
+ACCOUNT accountId=acct-1 currency=USD balance=75.00 nextSequence=3
+ACCOUNT accountId=acct-2 currency=INR balance=50.00 nextSequence=2
+ACCOUNT accountId=acct-3 currency=EUR balance=0.00 nextSequence=1
+BLOCKED transactionId=tx-004 accountId=acct-3 sequence=2 expected=1 reason=sequence_gap
